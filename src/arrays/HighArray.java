@@ -32,11 +32,20 @@ public class HighArray {
         if (j == nElems)
             return false;
         else {
-            for (int k = 0; k < nElems; k++)
+            for (int k = j; k < nElems; k++)
                 a[k] = a[k + 1];
             nElems--;
             return true;
         }
+    }
+
+    public long removeMax(){
+        long maxValue = a[0];
+        for (int j = 1; j < nElems; j++)
+            if (maxValue < a[j])
+                maxValue = a[j];
+        delete(maxValue);
+        return maxValue;
     }
 
     public void display(){
@@ -98,6 +107,10 @@ class HighArrayApp{
             System.out.println("Array is empty");
         else
             System.out.println("Array has size " + arr.getMax());
+
+        arr.display();
+
+        System.out.println("Max value: " + arr.removeMax());
 
         arr.display();
     }
